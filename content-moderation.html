@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Moderation - Ning Huen Technology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .deck { width: 100vw; height: calc(100vh - 80px); position: relative; margin-top: 80px; overflow: hidden; }
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .slide.active { opacity: 1; pointer-events: all; }
+    .nav-slider {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(14,24,64,0.85); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); border-radius: 50px; padding: 10px 20px; z-index: 100;
+    }
+    .nav-btn { background: none; border: none; cursor: pointer; color: var(--teal); font-size: 18px; padding: 4px 8px; border-radius: 6px; }
+    .nav-dots { display: flex; gap: 7px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray); cursor: pointer; transition: all 0.3s; border: none; }
+    .dot.active { background: var(--teal); transform: scale(1.4); }
+    .slide-counter { font-size: 12px; color: var(--gray); font-weight: 500; min-width: 40px; text-align: center; }
+    .slide-header { display: flex; align-items: center; justify-content: space-between; padding: 28px 52px 0; }
+    .slide-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--teal); text-transform: uppercase; }
+    .slide-body { flex: 1; display: flex; flex-direction: column; padding: 0 52px 80px; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+    .tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .tag-teal { background: rgba(0,196,180,0.12); color: var(--teal); border: 1px solid rgba(0,196,180,0.3); }
+    .tag-red  { background: rgba(255,77,106,0.12); color: var(--red);  border: 1px solid rgba(255,77,106,0.3); }
+    .tag-gold { background: rgba(245,166,35,0.12); color: var(--gold); border: 1px solid rgba(245,166,35,0.3); }
+    .tag-blue { background: rgba(26,108,255,0.12); color: #6ea6ff;    border: 1px solid rgba(26,108,255,0.3); }
+    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--gray); margin-top: 6px; line-height: 1.4; }
+    .divider { width: 52px; height: 3px; background: linear-gradient(90deg, var(--teal), var(--blue)); border-radius: 2px; margin: 16px 0; }
+    .mock-window { background: rgba(14,24,64,0.9); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
+    .mock-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.03); }
+    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mock-highlight { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .hl-red { background: rgba(255,77,106,0.25); color: #ff8fa0; border: 1px solid rgba(255,77,106,0.4); }
+    .key-hint { position: fixed; top: 100px; right: 24px; font-size: 11px; color: var(--gray); background: rgba(14,24,64,0.7); border: 1px solid var(--border); padding: 6px 12px; border-radius: 20px; backdrop-filter: blur(8px); }
+  </style>
+</head>
+<body>
+
+  <div class="bg-effects">
+    <div class="orb orb-teal"></div>
+    <div class="orb orb-blue"></div>
+    <div class="grid-bg"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">NH</div>
+        <div class="logo-text">Ning Huen Tech</div>
+      </a>
+      <div class="nav-links">
+        <div class="dropdown">
+          <button class="dropbtn">Products <span class="arrow">▼</span></button>
+          <div class="dropdown-content">
+            <a href="image-editing.html">
+              <span class="product-icon">🎨</span>
+              <div class="product-info">
+                <span class="product-title">Image Editing</span>
+                <span class="product-desc">AI-driven e-commerce visual rebuilding</span>
+              </div>
+            </a>
+            <a href="content-moderation.html">
+              <span class="product-icon">🛡️</span>
+              <div class="product-info">
+                <span class="product-title">Content Moderation</span>
+                <span class="product-desc">Compliance-ready AI screening</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<div class="deck">
+<!-- ===== SLIDE 1: COVER ===== -->
+<div class="slide active" id="s1">
+  <div class="slide-header">
+    <div class="slide-label">Confidential · 2026</div>
+  </div>
+  <div class="slide-body" style="justify-content:center;padding-top:0;">
+    <div class="eyebrow">AI Content Intelligence</div>
+    <h1>Compliance-Ready<br><span class="grad">Content Moderation</span><br>for Greater China</h1>
+    <p style="font-size:18px;color:var(--light);max-width:560px;line-height:1.6;margin-top:20px;font-weight:400;">Real-time AI pre-screening, risk classification, and intelligent compliance automation — built for Hong Kong's NSL and mainland regulatory frameworks.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;">
+      <span class="tag tag-teal">🛡️ Hong Kong NSL Compliant</span>
+      <span class="tag tag-blue">🤖 Multimodal AI</span>
+      <span class="tag tag-gold">🏆 HSITP SPIN Supported</span>
+    </div>
+  </div>
+  <div style="position:absolute;right:52px;top:50%;transform:translateY(-52%);width:380px;">
+    <div class="mock-window">
+      <div class="mock-bar">
+        <div class="mock-dot" style="background:#ff5f57"></div>
+        <div class="mock-dot" style="background:#febc2e"></div>
+        <div class="mock-dot" style="background:#28c840"></div>
+        <span style="font-size:11px;color:var(--gray);margin-left:8px;">Editorial Review Desk</span>
+      </div>
+      <div style="padding:20px;">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#ff4d6a;box-shadow:0 0 6px #ff4d6a"></div>
+          <span style="font-size:12px;font-weight:600;color:var(--light);">8 findings · 3 categories</span>
+          <span class="tag tag-red" style="margin-left:auto;font-size:10px;">High Risk</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);padding:14px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);font-size:12px;color:var(--light);line-height:1.6;">
+          The organization struck during the Unity Day ceremony. Players will <span class="mock-highlight hl-red">seize</span> enemy strongholds and <span class="mock-highlight hl-red">capture</span> high-value targets using <span class="mock-highlight hl-red">mercenaries</span>…
+        </div>
+        <div style="margin-top:14px;padding:12px;background:rgba(0,196,180,0.06);border:1px solid rgba(0,196,180,0.2);border-radius:8px;">
+          <div style="font-size:11px;color:var(--teal);font-weight:600;margin-bottom:4px;">✦ Suggested rewrite</div>
+          <div style="font-size:11px;color:var(--light);">assume control of the Alliance fleet and establish lasting order</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 2: PROBLEM ===== -->
+<div class="slide" id="s2">
+  <div class="slide-header">
+    <div class="slide-label">The Problem</div>
+  </div>
+  <div class="slide-body">
+    <div style="margin-top:32px;">
+      <div class="eyebrow">The Challenge</div>
+      <h2>Publishing in Greater China is a<br><span class="grad">regulatory minefield</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-top:2px solid var(--red);border-radius:16px;padding:24px;">
+        <div class="icon-circle ic-red">⚠️</div>
+        <h3 style="font-size:16px;font-weight:700;margin:14px 0 8px;">Complex, Evolving Regulations</h3>
+        <p style="font-size:13px;color:var(--gray);line-height:1.65;">HK NSL, mainland online content laws, and game approval requirements change frequently — manual review can't keep pace.</p>
+        <div style="font-size:36px;font-weight:800;margin-top:16px;"><span class="grad-gold">50+</span></div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;">Regulatory documents to track</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-top:2px solid #f97316;border-radius:16px;padding:24px;">
+        <div class="icon-circle ic-gold">⏱️</div>
+        <h3 style="font-size:16px;font-weight:700;margin:14px 0 8px;">Slow, Expensive Compliance</h3>
+        <p style="font-size:13px;color:var(--gray);line-height:1.65;">Human editorial review averages days per document. Legal consultants cost $500–$2,000/hr. Fines for violations reach millions.</p>
+        <div style="font-size:36px;font-weight:800;margin-top:16px;"><span class="grad-gold">3–7</span></div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;">Days average manual review cycle</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-top:2px solid var(--teal);border-radius:16px;padding:24px;">
+        <div class="icon-circle ic-teal">🌐</div>
+        <h3 style="font-size:16px;font-weight:700;margin:14px 0 8px;">No Specialized Tool Exists</h3>
+        <p style="font-size:13px;color:var(--gray);line-height:1.65;">Generic AI tools (AWS, Azure) are trained on Western content policies — not Greater China regulatory nuance.</p>
+        <div style="font-size:36px;font-weight:800;margin-top:16px;"><span class="grad">0</span></div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;">Purpose-built solutions for HK/GBA market</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:16px 20px;background:rgba(255,77,106,0.06);border:1px solid rgba(255,77,106,0.2);border-radius:12px;display:flex;align-items:center;gap:16px;">
+      <span style="font-size:22px;">📢</span>
+      <p style="font-size:13px;color:var(--light);line-height:1.6;">In 2023, <strong>127 mobile games</strong> were rejected or fined during China's approval process for content violations — many due to narrative text flagged post-submission.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 3: SOLUTION ===== -->
+<div class="slide" id="s3">
+  <div class="slide-header">
+    <div class="slide-label">Our Solution</div>
+  </div>
+  <div class="slide-body">
+    <div style="margin-top:28px;">
+      <div class="eyebrow">The Platform</div>
+      <h2><span class="grad">AI-Powered</span> Content Intelligence Suite</h2>
+      <div class="divider"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px;flex:1;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="icon-circle ic-teal">🔍</div>
+          <div>
+            <h4 style="font-size:15px;font-weight:600;margin-bottom:4px;">Multimodal Pre-Screening</h4>
+            <p style="font-size:13px;color:var(--gray);line-height:1.6;">Scans text and images simultaneously against 50+ regulatory policy documents covering HK NSL and mainland standards.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="icon-circle ic-red">🚨</div>
+          <div>
+            <h4 style="font-size:15px;font-weight:600;margin-bottom:4px;">Risk Classification Engine</h4>
+            <p style="font-size:13px;color:var(--gray);line-height:1.6;">Tags findings by category (violence, social disorder, security non-compliance) with severity — tied to specific policy articles.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="icon-circle ic-gold">✏️</div>
+          <div>
+            <h4 style="font-size:15px;font-weight:600;margin-bottom:4px;">AI Rewrite Suggestions</h4>
+            <p style="font-size:13px;color:var(--gray);line-height:1.6;">Automatically generates policy-safe alternative phrasing. One-click apply. Copywriters stay in flow.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div class="icon-circle ic-blue">🤖</div>
+          <div>
+            <h4 style="font-size:15px;font-weight:600;margin-bottom:4px;">Agent-Guided Review</h4>
+            <p style="font-size:13px;color:var(--gray);line-height:1.6;">Conversational AI co-pilot — upload PDFs, ask regulatory questions, get instant context and compliance guidance.</p>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center;">
+        <div style="font-size:12px;font-weight:600;color:var(--teal);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Moderation Pipeline</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+          <div class="icon-circle ic-blue" style="width:38px;height:38px;font-size:16px;">📄</div>
+          <div><div style="font-size:13px;font-weight:600;">Content Ingestion</div><div style="font-size:11px;color:var(--gray);">Text · Image · PDF · Game Scripts</div></div>
+        </div>
+        <div style="color:var(--teal);font-size:18px;text-align:center;">↓</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+          <div class="icon-circle ic-teal" style="width:38px;height:38px;font-size:16px;">🧠</div>
+          <div><div style="font-size:13px;font-weight:600;">AI Analysis</div><div style="font-size:11px;color:var(--gray);">Multimodal LLM + Policy Embedding</div></div>
+        </div>
+        <div style="color:var(--teal);font-size:18px;text-align:center;">↓</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+          <div class="icon-circle ic-red" style="width:38px;height:38px;font-size:16px;">⚖️</div>
+          <div><div style="font-size:13px;font-weight:600;">Risk Classification</div><div style="font-size:11px;color:var(--gray);">Category · Severity · Source Policy</div></div>
+        </div>
+        <div style="color:var(--teal);font-size:18px;text-align:center;">↓</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;">
+          <div class="icon-circle ic-gold" style="width:38px;height:38px;font-size:16px;">✅</div>
+          <div><div style="font-size:13px;font-weight:600;">Report + Rewrite Suggestions</div><div style="font-size:11px;color:var(--gray);">Export · API · Editorial Dashboard</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<div class="nav-slider">
+  <button class="nav-btn" onclick="changeSlide(-1)">&#8592;</button>
+  <div class="nav-dots" id="dots"></div>
+  <span class="slide-counter" id="counter">1 / 3</span>
+  <button class="nav-btn" onclick="changeSlide(1)">&#8594;</button>
+</div>
+<div class="key-hint">&#8592; &#8594; Arrow keys to navigate</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  let current = 0;
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goTo(i);
+    dotsContainer.appendChild(dot);
+  });
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    document.querySelectorAll('.dot')[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    slides[current].classList.add('active');
+    document.querySelectorAll('.dot')[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+  function changeSlide(dir) { goTo(current + dir); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changeSlide(-1);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Editing - Ning Huen Technology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .process-step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      color: white;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .step-content h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    
+    .step-content p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    
+    .demo-img {
+      width: 100%;
+      height: 300px;
+      background: var(--navy2);
+      border-radius: 12px;
+      border: 1px dashed rgba(0,196,180,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .demo-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent, rgba(0,196,180,0.1), transparent);
+      animation: sweep 2s infinite;
+    }
+    
+    @keyframes sweep {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-effects">
+    <div class="orb orb-teal"></div>
+    <div class="orb orb-blue" style="top: 200px; left: -200px;"></div>
+    <div class="grid-bg"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">NH</div>
+        <div class="logo-text">Ning Huen Tech</div>
+      </a>
+      <div class="nav-links">
+        <div class="dropdown">
+          <button class="dropbtn">Products <span class="arrow">▼</span></button>
+          <div class="dropdown-content">
+            <a href="image-editing.html">
+              <span class="product-icon">🎨</span>
+              <div class="product-info">
+                <span class="product-title">Image Editing</span>
+                <span class="product-desc">AI-driven e-commerce visual rebuilding</span>
+              </div>
+            </a>
+            <a href="content-moderation.html">
+              <span class="product-icon">🛡️</span>
+              <div class="product-info">
+                <span class="product-title">Content Moderation</span>
+                <span class="product-desc">Compliance-ready AI screening</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="product-hero">
+    <div class="badge">
+      <span class="badge-dot"></span> Core Product
+    </div>
+    <h1>E-Commerce Visual<br><span class="grad">Rebuilding Engine</span></h1>
+    <p class="subtitle">Generate massive, aesthetic product photos based on URL or CSV inputs. Our AI automatically conceptualizes the best scenes and use-cases for thousands of SKUs across jewellery, toys, and clothing industries.</p>
+  </main>
+
+  <section class="product-showcase">
+    <div class="workflow-card">
+      <div class="image-grid">
+        <div>
+          <h2 style="font-family:'Space Grotesk'; font-size:32px; margin-bottom:32px;">How it works</h2>
+          
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Bulk Input</h3>
+              <p>Upload a CSV file containing thousands of product SKUs, or simply provide e-commerce URLs. The AI engine fetches the raw product imagery.</p>
+            </div>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Intelligent Ad Concepting</h3>
+              <p>The AI analyzes the product category (e.g., luxury jewellery, outdoor toys) and identifies the target end-user to formulate the perfect ad concept and aesthetic direction.</p>
+            </div>
+          </div>
+          
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Scene Generation</h3>
+              <p>Generates high-fidelity, photorealistic background scenes seamlessly integrating the product, complete with dynamic lighting and shadows.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <div class="mockup-dot" style="background:#ff5f57"></div>
+              <div class="mockup-dot" style="background:#febc2e"></div>
+              <div class="mockup-dot" style="background:#28c840"></div>
+            </div>
+            <div style="padding: 24px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:16px;">
+                <span class="tag tag-teal">Batch Processing</span>
+                <span style="color:var(--gray); font-size:13px;">Processing 2,450 SKUs...</span>
+              </div>
+              <div class="demo-img">
+                <span style="color:var(--teal); font-weight:600; z-index:1;">Generating Scene (Jewellery/Luxury)...</span>
+              </div>
+              
+              <div style="margin-top:20px; background:rgba(255,255,255,0.03); padding:16px; border-radius:8px;">
+                <div style="font-size:12px; color:var(--gray); margin-bottom:8px;">AI Concept Analysis:</div>
+                <div style="font-size:14px; color:var(--light); font-family:monospace;">
+                  > Product: Sapphire Pendant<br>
+                  > Target: High-net-worth individuals<br>
+                  > Scene: Dark velvet backdrop, dramatic top-down spotlight, cinematic depth of field.<br>
+                  > Status: <span style="color:var(--teal);">Rendering...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
