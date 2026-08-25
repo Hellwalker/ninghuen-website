@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -25,13 +26,9 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/8 bg-[#070d24]/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-linear-to-br from-teal-400 to-blue-600 font-heading text-[11px] font-extrabold text-[#070d24]">
-            NH
-          </span>
-          <span className="font-heading text-sm font-semibold tracking-tight">
-            Ning Huen Tech
-          </span>
+        <Link href="/" className="text-white">
+          <BrandLogo />
+          <span className="sr-only">Ning Huen AI</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -73,7 +70,9 @@ export function SiteNav() {
           </SheetTrigger>
           <SheetContent side="right" className="bg-[#0b1228] text-white border-white/10">
             <SheetHeader>
-              <SheetTitle>Ning Huen</SheetTitle>
+              <SheetTitle>
+                <BrandLogo />
+              </SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-2 px-4">
               {links.map((link) => (

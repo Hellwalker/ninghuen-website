@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight, Aperture, Images, PenLine } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { ParamChip } from "@/components/param-chip";
 import { ShotImage } from "@/components/shot-image";
 import { Badge } from "@/components/ui/badge";
@@ -28,6 +29,7 @@ export default function HomePage() {
 
         <div className="grid items-end gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
+            <BrandLogo variant="lockup" className="mb-5 h-[4.75rem] sm:h-24" />
             <p className="text-xs tracking-[0.2em] text-teal-300 uppercase">
               Ning Huen Technology
             </p>

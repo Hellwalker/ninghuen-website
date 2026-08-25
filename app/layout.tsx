@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   },
   description:
     "AI scenery generation for e-commerce: human models, ratios, styles, collages with scene notes and photo parameters — plus compliance-ready content moderation.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
