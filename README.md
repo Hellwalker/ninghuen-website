@@ -6,7 +6,7 @@ The Image AI channel is rebuilt as a visual product — closer to how [Lovart](h
 
 Content Moderation is unchanged: the original Greater China slide deck is served at `/content-moderation.html`.
 
-The English HSITP × Dubai Chambers pitch is a 14-slide full-screen deck at `/pitch/` (arrow keys or swipe). It is written for programme judges to read without a presenter: Company, Team, Technology and Business, with a comparison table, GCC applications, and a 90-day corridor plan. It leads with Content AI — frame-level video/image review, structured transcripts, Google Image Search risk graph, and a generation compliance layer — then jewellery Image AI for GCC scenery.
+A temporary banner on the homepage links into the English HSITP × Dubai Chambers pitch — a 14-slide full-screen deck at `/pitch/` (arrow keys or swipe). It is written for programme judges to read without a presenter: Company, Team, Technology and Business, with a comparison table, GCC applications, and a 90-day corridor plan. Founder is named as Dr. Danny. It leads with Content AI — frame-level video/image review, structured transcripts, Google Image Search risk graph, and a generation compliance layer — then jewellery Image AI for GCC scenery.
 
 ## Run locally
 

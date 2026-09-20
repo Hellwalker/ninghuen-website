@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { HomePitchBanner } from "@/components/home-pitch-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <TooltipProvider>
+          <HomePitchBanner />
           <SiteNav />
           {children}
           <SiteFooter />

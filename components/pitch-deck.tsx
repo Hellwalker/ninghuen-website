@@ -261,7 +261,7 @@ function Company() {
   return (
     <Slide kicker="01 · Company introduction" title="Ning Huen Technology">
       <p className="max-w-3xl text-[15px] leading-relaxed text-white/72">
-        Hong Kong–Shenzhen AI studio, founded by DH and supported by the HSITP
+        Hong Kong–Shenzhen AI studio, founded by {PITCH_META.founder} and supported by the HSITP
         SPIN Programme. We build the review desk that media, marketplaces and
         brands need before content goes live — and the scenery engine that
         produces campaign stills without breaking the SKU. Public surface:{" "}
@@ -310,7 +310,9 @@ function Management() {
           <p className="text-[11px] tracking-[0.16em] text-teal-300 uppercase">
             Founder
           </p>
-          <p className="mt-2 font-heading text-4xl font-semibold">DH</p>
+          <p className="mt-2 font-heading text-4xl font-semibold">
+            {PITCH_META.founder}
+          </p>
           <p className="mt-1 text-sm text-white/45">
             Product · commercial · both engines
           </p>
@@ -332,7 +334,7 @@ function Management() {
           <Panel title="What we hire next in the corridor">
             A GCC media / policy lead (Arabic linguist who can own the pack),
             and a design partner in gold retail, a marketplace, or a short-form
-            network. Named operators and advisors beyond DH are open on this
+            network. Named operators and advisors beyond {PITCH_META.founder} are open on this
             slide and can be filled for the application pack.
           </Panel>
           <Panel title="Governance">
@@ -868,7 +870,9 @@ function Close() {
           </div>
         ))}
       </div>
-      <p className="mt-7 font-heading text-xl">DH · Ning Huen Technology</p>
+      <p className="mt-7 font-heading text-xl">
+        {PITCH_META.founder} · Ning Huen Technology
+      </p>
       <p className="mt-1 text-sm tracking-[0.16em] text-teal-300/85 uppercase">
         {PITCH_META.site} · HSITP SPIN · {PITCH_META.corridor}
       </p>

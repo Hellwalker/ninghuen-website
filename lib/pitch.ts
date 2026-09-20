@@ -2,6 +2,7 @@ export const PITCH_META = {
   programme: "HSITP × Dubai Chambers Tech Exchange Programme",
   corridor: "Hong Kong ⇆ Dubai",
   company: "Ning Huen Technology",
+  founder: "Dr. Danny",
   site: "ninghuen.com",
   year: "2026",
 } as const;

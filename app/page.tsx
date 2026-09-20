@@ -25,13 +25,6 @@ export default function HomePage() {
           <Badge variant="outline" className="border-white/15 text-white/70">
             Image AI · scenery with locked camera notes
           </Badge>
-          <Badge
-            variant="outline"
-            render={<Link href="/pitch/" />}
-            className="border-teal-400/30 text-teal-100"
-          >
-            Dubai corridor pitch
-          </Badge>
         </div>
 
         <div className="grid items-end gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -64,10 +57,10 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                render={<Link href="/pitch/" />}
+                render={<Link href="/gallery/" />}
                 className="h-11 border-white/15 bg-transparent px-5 text-white"
               >
-                Dubai corridor pitch
+                View gallery
               </Button>
             </div>
           </div>
