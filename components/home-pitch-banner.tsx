@@ -18,11 +18,8 @@ export function HomePitchBanner() {
           <span className="mt-0.5 shrink-0 rounded-full border border-teal-400/40 bg-teal-400/10 px-2 py-0.5 text-[10px] tracking-[0.16em] text-teal-200 uppercase sm:mt-0">
             Temporary
           </span>
-          <p className="text-sm leading-relaxed text-white/80">
-            <span className="font-medium text-white">
-              HSITP × Dubai Chambers Tech Exchange.
-            </span>{" "}
-            14-slide corridor pitch — Company, Team, Technology, Business. Founder: Dr. Danny.
+          <p className="text-sm font-medium text-white">
+            HSITP × Dubai Chamber Tech Exchange
           </p>
         </div>
         <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-teal-200 group-hover:text-teal-100">
