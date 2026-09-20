@@ -132,3 +132,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+.pitch-root {
+  background: #050816;
+}
+
+.pitch-root ::selection {
+  background: rgba(0, 196, 180, 0.35);
+}
