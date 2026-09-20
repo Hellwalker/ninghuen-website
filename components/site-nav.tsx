@@ -18,10 +18,12 @@ const links = [
   { href: "/image-editing/", label: "Image AI" },
   { href: "/gallery/", label: "Gallery" },
   { href: "/content-moderation.html", label: "Content AI" },
+  { href: "/pitch/", label: "Dubai pitch" },
 ];
 
 export function SiteNav() {
   const pathname = usePathname();
+  if (pathname?.startsWith("/pitch")) return null;
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/8 bg-[#070d24]/80 backdrop-blur-xl">

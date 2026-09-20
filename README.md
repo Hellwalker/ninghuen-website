@@ -4,7 +4,9 @@ Marketing site for [ninghuen.com](https://ninghuen.com): e-commerce image scener
 
 The Image AI channel is rebuilt as a visual product — closer to how [Lovart](https://lovart.ai) shows a canvas, not a three-step diagram. Visitors pick a human model, quantity, ratio and style, generate a collage, then open any plate to edit it with the scene description and camera notes still attached.
 
-Content Moderation is unchanged: the original slide deck is served at `/content-moderation.html`.
+Content Moderation is unchanged: the original Greater China slide deck is served at `/content-moderation.html`.
+
+The English HSITP × Dubai Chambers pitch is a full-screen deck at `/pitch/` (arrow keys). It leads with Content AI — frame-level video/image review, structured transcripts, Google Image Search risk graph, and a generation compliance layer — then jewellery Image AI for GCC scenery.
 
 ## Run locally
 

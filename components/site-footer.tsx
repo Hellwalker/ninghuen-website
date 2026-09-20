@@ -1,6 +1,12 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/components/brand-logo";
 
 export function SiteFooter() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/pitch")) return null;
+
   return (
     <footer className="mt-auto border-t border-white/8 py-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
