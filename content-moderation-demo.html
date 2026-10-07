@@ -3,47 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LexDesk Demo · Content AI - Ning Huen Technology</title>
-  <meta name="description" content="Static Visuai LexDesk demo for Ning Huen Content AI. Sample findings stay in the browser. No moderation service is called." />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/legacy/index.css">
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <title>Visuai LexDesk</title>
+  <meta name="description" content="Static Visuai LexDesk review desk. Sample findings stay in the browser." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'none'; font-src 'self' data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f9a52'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' font-family='sans-serif' fill='white'%3EL%3C/text%3E%3C/svg%3E" />
   <style>
-    body.demo-body { background: #e8eef3; color: #1c2430; }
-    .nav-links { display: flex; align-items: center; gap: 12px; }
-    .demo-nav-btn { padding: 8px 16px; font-size: 14px; white-space: nowrap; }
-    .demo-nav-btn[aria-current="page"] { box-shadow: 0 0 0 2px rgba(0, 229, 212, 0.45), 0 8px 24px rgba(0, 196, 180, 0.25); }
-
-    .demo-frame {
-      margin-top: 80px;
-      height: calc(100vh - 80px);
-      display: flex;
-      flex-direction: column;
-      min-height: 560px;
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      background: #e8eef3;
+      color: #1c2430;
+      color-scheme: light;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
     }
-    .demo-strip {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 10px 22px;
-      background: #0e1840;
-      color: #c8d6f0;
-      border-bottom: 1px solid rgba(0, 196, 180, 0.22);
-      font-size: 13px;
-    }
-    .demo-strip a { color: #00e5d4; font-weight: 600; text-decoration: none; }
-    .demo-strip a:hover { color: #fff; }
+    button, textarea { font: inherit; }
+    button { cursor: pointer; }
+    p, h1, h2, h3 { margin: 0; }
 
     .lex-app {
-      flex: 1;
+      height: 100vh;
       min-height: 0;
       display: flex;
       color: #1c2430;
-      color-scheme: light;
-      font-family: Inter, sans-serif;
+      font-family: inherit;
     }
     .lex-app h1, .lex-app h2, .lex-app h3, .lex-app p { margin: 0; letter-spacing: 0; }
     .lex-app h1, .lex-app h2, .lex-app h3 {
@@ -202,7 +185,10 @@
     .lex-table th { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d8b9a; }
     .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
     .stat { background: #f6f9fb; border: 1px solid #e1e8ef; border-radius: 12px; padding: 14px; }
-    .stat b { display: block; font-family: "Space Grotesk", Inter, sans-serif; font-size: 28px; color: #18202b; }
+    .stat b { display: block; font-family: inherit; font-size: 28px; color: #18202b; }
+    .back-link { display: inline-block; margin-top: 10px; font-size: 11px; color: #8b97a8; text-decoration: underline; text-underline-offset: 2px; }
+    .back-link:hover { color: #d5deea; }
+    .panel-card a { color: #1f7a45; }
     .stat span { color: #5c6b7c; font-size: 12px; }
 
     .lex-findings {
@@ -238,63 +224,19 @@
     }
 
     @media (max-width: 980px) {
-      .demo-frame { height: auto; min-height: calc(100vh - 80px); }
-      .lex-app { flex-direction: column; }
+      body { overflow: auto; }
+      .lex-app { flex-direction: column; height: auto; min-height: 100vh; }
       .lex-side, .lex-findings { width: 100%; flex-basis: auto; }
       .lex-findings { border-left: 0; border-top: 1px solid #e1e7ee; }
       .side-foot { margin-top: 18px; }
       .try-grid, .stat-grid { grid-template-columns: 1fr; }
       .lex-main { padding: 22px 16px 28px; }
-      .demo-strip { align-items: flex-start; flex-direction: column; gap: 6px; }
     }
   </style>
 </head>
-<body class="demo-body">
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="/" class="logo">
-        <img class="logo-mark" src="/brand/ninghuen-owl-ivory.png" alt="" />
-        <div class="logo-text">Ning Huen AI</div>
-      </a>
-      <div class="nav-links">
-        <div class="dropdown">
-          <button class="dropbtn" type="button">Products <span class="arrow">▼</span></button>
-          <div class="dropdown-content">
-            <a href="/image-editing/">
-              <span class="product-icon">🎨</span>
-              <div class="product-info">
-                <span class="product-title">Image Editing</span>
-                <span class="product-desc">AI-driven e-commerce visual rebuilding</span>
-              </div>
-            </a>
-            <a href="/content-moderation.html">
-              <span class="product-icon">🛡️</span>
-              <div class="product-info">
-                <span class="product-title">Content Moderation</span>
-                <span class="product-desc">Compliance-ready AI screening</span>
-              </div>
-            </a>
-            <a href="/pitch/">
-              <span class="product-icon">🇦🇪</span>
-              <div class="product-info">
-                <span class="product-title">Dubai corridor pitch</span>
-                <span class="product-desc">HSITP × Dubai Chambers deck</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <a class="btn btn-primary demo-nav-btn" href="/content-moderation-demo.html" aria-current="page">Demo</a>
-      </div>
-    </div>
-  </nav>
-
-  <div class="demo-frame">
-    <div class="demo-strip">
-      <span>Static demo. Sample text and findings stay in this browser. No moderation service is called.</span>
-      <a href="/content-moderation.html">Back to Content AI</a>
-    </div>
-    <p id="lex-live" class="sr" aria-live="polite"></p>
-    <div class="lex-app" id="lex-app">
+<body>
+  <p id="lex-live" class="sr" aria-live="polite"></p>
+  <div class="lex-app" id="lex-app">
       <aside class="lex-side" id="lex-side">
         <div class="lex-brand">
           <div class="lex-mark" aria-hidden="true">L</div>
@@ -314,12 +256,12 @@
         <div class="side-foot">
           <p class="side-status">Sample lexicon · 4 terms · local mock</p>
           <p class="side-note">Advisory pre-screen only. Results are risk indicators, not an official approval or legal opinion.</p>
+          <a class="back-link" href="/content-moderation.html">Content AI</a>
         </div>
       </aside>
       <section class="lex-main" id="lex-main" aria-label="Review desk"></section>
       <aside class="lex-findings" id="lex-findings" aria-label="Findings"></aside>
     </div>
-  </div>
 
   <script>
     /* Public static mock. Matches a bundled sample lexicon in the browser.
@@ -330,400 +272,4 @@
       var NARRATIVE = "【大纪元2025年09月19日讯】1974年11月10日，地处广州闹市的中山五路—北京路口出现了一张署名“李一哲”的大字报，题为《关于社会主义的民主与法制》，吸引了成千上万的人日夜围观与抄写，一度造成道路塞车，在国内外引起轰动和争论。\n\n这张大字报共二万六千多字、长达十七张白报纸，内容呼吁民主和对法制的建议，以批判“林彪体系”为形式，矛头直指中共建国以来极左运动践踏民主法制的种种弊病。大字报还末点名地指出了当权者的许多罪行，并且联系这些现象，分析了社会主义“体系”本身存在的严重问题。";
       var PERSONS = "展陈脚本：第二展厅的说明牌引用署名“李一哲”的文献，只交代年份、地点和标题。讲解员不延伸到对当代制度的评价。";
       var DIALOGUE = "甲：这句要不要留着“大字报”三个字？\n乙：留在引号里，并标成历史材料。\n甲：下一句点了“林彪体系”。\n乙：删掉人名体系，改成馆方写好的年代说明。";
-
-      var RULES = [
-        { id: "dazibao", terms: ["大字报"], category: "Historical narrative", severity: "Review", kbTitle: "Sample card · historical statement", kbBody: "Illustrative card bundled in this page. A production desk would open the lexicon entry for this span. This demo does not query one.", advice: "Flag the span for an editor and confirm whether it is quotation, narration, or endorsement." },
-        { id: "person", terms: ["李一哲"], category: "Named person", severity: "Review", kbTitle: "Sample card · named person", kbBody: "Illustrative knowledge-base card for a named historical reference. No live biography or search service is attached.", advice: "Keep the name inside cited historical context, or cut it if the line is not a citation." },
-        { id: "system", terms: ["林彪体系"], category: "Political reference", severity: "High", kbTitle: "Sample card · political reference", kbBody: "Illustrative card only. The match comes from the four terms shipped with this file.", advice: "Treat the span as a publication-risk indicator and route it to an editor before the cut is locked." },
-        { id: "power", terms: ["当权者"], category: "Political reference", severity: "Note", kbTitle: "Sample card · wording", kbBody: "Illustrative wording card. It is not a legal determination.", advice: "Ask the editor whether the wording is needed for the scene, or whether a plainer historical description will do." }
-      ];
-
-      var EXAMPLES = [
-        { id: "narrative", mode: "text", title: "Narrative beat · Risk matches", draft: NARRATIVE },
-        { id: "persons", mode: "text", title: "Special persons · KB links", draft: PERSONS },
-        { id: "dialogue", mode: "dialogue", title: "Dialogue lines · Risk matches", draft: DIALOGUE }
-      ];
-
-      var drafts = { text: NARRATIVE, dialogue: DIALOGUE };
-      var state = { view: "reviews", mode: "text", phase: "idle", findings: [], selectedId: null, timer: null };
-      var main = document.getElementById("lex-main");
-      var findingsEl = document.getElementById("lex-findings");
-      var live = document.getElementById("lex-live");
-      var app = document.getElementById("lex-app");
-
-      function escapeHtml(value) {
-        return String(value).replace(/[&<>"']/g, function (ch) {
-          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
-        });
-      }
-
-      function hasCjk(value) {
-        return /[\u3400-\u9fff]/.test(value || "");
-      }
-
-      function currentDraft() {
-        return state.mode === "dialogue" ? drafts.dialogue : drafts.text;
-      }
-
-      function syncDraft() {
-        var field = document.getElementById("lex-draft");
-        if (!field) return;
-        if (state.mode === "dialogue") drafts.dialogue = field.value;
-        else if (state.mode === "text") drafts.text = field.value;
-      }
-
-      function activeExampleId() {
-        for (var i = 0; i < EXAMPLES.length; i++) {
-          var ex = EXAMPLES[i];
-          if (ex.mode === state.mode && drafts[ex.mode] === ex.draft) return ex.id;
-        }
-        return "";
-      }
-
-      function matchRules(text) {
-        var found = [];
-        RULES.forEach(function (rule) {
-          var spans = [];
-          rule.terms.forEach(function (term) {
-            var from = 0;
-            while (from < text.length) {
-              var at = text.indexOf(term, from);
-              if (at < 0) break;
-              spans.push({ start: at, end: at + term.length, term: term });
-              from = at + term.length;
-            }
-          });
-          if (!spans.length) return;
-          var span = spans[0];
-          var a = Math.max(0, span.start - 14);
-          var b = Math.min(text.length, span.end + 14);
-          found.push({
-            id: rule.id,
-            category: rule.category,
-            severity: rule.severity,
-            term: span.term,
-            kbTitle: rule.kbTitle,
-            kbBody: rule.kbBody,
-            advice: rule.advice,
-            spans: spans,
-            excerpt: (a > 0 ? "…" : "") + text.slice(a, b) + (b < text.length ? "…" : "")
-          });
-        });
-        found.sort(function (a, b) { return a.spans[0].start - b.spans[0].start; });
-        return found;
-      }
-
-      function limitFinding(mode) {
-        var label = mode === "video" ? "video beat" : "frame";
-        return {
-          id: "static-limit",
-          category: "Static demo limit",
-          severity: "Note",
-          term: "No " + label + " attached",
-          kbTitle: "No knowledge-base lookup",
-          kbBody: "Image and video slots are placeholders. This page does not upload media or call a vision model.",
-          advice: "Switch to Text or Dialogue to match the bundled sample lexicon.",
-          spans: [],
-          excerpt: "Nothing was uploaded."
-        };
-      }
-
-      function highlight(text) {
-        var ranges = [];
-        state.findings.forEach(function (finding) {
-          (finding.spans || []).forEach(function (span) {
-            ranges.push({ start: span.start, end: span.end, id: finding.id });
-          });
-        });
-        ranges.sort(function (a, b) { return a.start - b.start || b.end - a.end; });
-        var html = "";
-        var cursor = 0;
-        ranges.forEach(function (range) {
-          if (range.start < cursor || range.end <= range.start) return;
-          html += escapeHtml(text.slice(cursor, range.start));
-          var on = range.id === state.selectedId ? " is-on" : "";
-          html += '<mark class="hit' + on + '" data-finding="' + escapeHtml(range.id) + '">' + escapeHtml(text.slice(range.start, range.end)) + "</mark>";
-          cursor = range.end;
-        });
-        html += escapeHtml(text.slice(cursor));
-        return html;
-      }
-
-      function modeLabel() {
-        if (state.mode === "image") return "Image · frame placeholder";
-        if (state.mode === "dialogue") return "Dialogue · line match";
-        if (state.mode === "video") return "Video · beat placeholder";
-        return "Text · lexicon match";
-      }
-
-      function composer() {
-        if (state.mode === "image") {
-          return '<div class="frame-slot"><div class="frame-glyph" aria-hidden="true"></div><p>No frame attached</p><p class="muted">Stills stay on this page. Nothing is uploaded.</p></div>';
-        }
-        if (state.mode === "video") {
-          return '<div class="beat-slot"><ol class="beat-list"><li><span>00:00</span> Opening wide</li><li><span>00:04</span> Dialogue bed</li><li><span>00:09</span> End card</li></ol><p class="muted">Playback is not available in this static demo.</p></div>';
-        }
-        var draft = currentDraft();
-        if (state.phase === "done") {
-          return '<div class="lex-read" lang="zh-Hans">' + highlight(draft) + "</div>";
-        }
-        var locked = state.phase === "running" ? " readonly" : "";
-        var label = state.mode === "dialogue" ? "Dialogue to review" : "Passage to review";
-        return '<textarea id="lex-draft" lang="zh-Hans" spellcheck="false" autocomplete="off" aria-label="' + label + '"' + locked + ">" + escapeHtml(draft) + "</textarea>";
-      }
-
-      function tabs() {
-        return ["text", "image", "dialogue", "video"].map(function (mode) {
-          var name = mode.charAt(0).toUpperCase() + mode.slice(1);
-          var on = mode === state.mode ? " is-on" : "";
-          var selected = mode === state.mode ? "true" : "false";
-          return '<button type="button" class="lex-tab' + on + '" data-mode="' + mode + '" role="tab" aria-selected="' + selected + '">' + name + "</button>";
-        }).join("");
-      }
-
-      function chips() {
-        return EXAMPLES.map(function (ex) {
-          var on = ex.id === activeExampleId() ? " is-on" : "";
-          return '<button type="button" class="chip' + on + '" data-example="' + ex.id + '">' + escapeHtml(ex.title) + "</button>";
-        }).join("");
-      }
-
-      function cjkNote() {
-        if ((state.mode === "text" || state.mode === "dialogue") && hasCjk(currentDraft())) {
-          return "Sample content is Chinese — lexicon coverage is CJK-first";
-        }
-        return "Bundled sample lexicon only";
-      }
-
-      function renderReviews() {
-        var busy = state.phase === "running";
-        var edit = state.phase === "done" && (state.mode === "text" || state.mode === "dialogue")
-          ? ' <button type="button" class="text-btn" data-action="edit">Edit text</button>'
-          : "";
-        main.innerHTML =
-          "<h1>What would you like to review?</h1>" +
-          '<p class="lex-lead">Pre-screen scripts, frames, dialogue, and video before China\'s publication review process.</p>' +
-          '<div class="lex-toolbar"><div class="lex-tabs" role="tablist" aria-label="Review type">' + tabs() + "</div>" +
-          '<div class="lex-actions"><button type="button" class="btn-line" data-action="try">Try an example</button>' +
-          '<button type="button" class="btn-go" data-action="create"' + (busy ? " disabled" : "") + ">" + (busy ? "Reviewing…" : "Create review") + "</button></div></div>" +
-          '<div class="lex-card"><div class="lex-card-body">' + composer() + "</div>" +
-          '<div class="lex-card-foot"><span>' + modeLabel() + edit + "</span><span>" + cjkNote() + "</span></div></div>" +
-          '<p class="try-label">TRY AN EXAMPLE</p><div class="try-grid">' + chips() + "</div>";
-      }
-
-      function renderLexicon() {
-        var rows = RULES.map(function (rule) {
-          return "<tr><td>" + escapeHtml(rule.terms[0]) + "</td><td>" + escapeHtml(rule.category) + "</td><td>" + escapeHtml(rule.severity) + "</td><td>Sample</td></tr>";
-        }).join("");
-        main.innerHTML =
-          '<article class="panel-card"><h2>Lexicon admin</h2>' +
-          "<p>These four terms are the entire lexicon on this public page. They are illustrative rows, not the production list, and they are not loaded from a service.</p>" +
-          '<table class="lex-table"><thead><tr><th>Term</th><th>Category</th><th>Severity</th><th>Scope</th></tr></thead><tbody>' + rows + "</tbody></table></article>";
-      }
-
-      function renderReport() {
-        var high = 0, review = 0, note = 0;
-        state.findings.forEach(function (finding) {
-          if (finding.severity === "High") high += 1;
-          else if (finding.severity === "Note") note += 1;
-          else review += 1;
-        });
-        var body = state.findings.length
-          ? '<div class="stat-grid"><div class="stat"><b>' + state.findings.length + '</b><span>Sample indicators</span></div><div class="stat"><b>' + high + '</b><span>High</span></div><div class="stat"><b>' + (review + note) + '</b><span>Review or note</span></div></div>'
-          : "<p>No review in this tab yet. Create a review on the desk to fill this report.</p>";
-        main.innerHTML =
-          '<article class="panel-card"><h2>Risk report</h2>' +
-          "<p>Counts only the last check in this browser tab. Nothing is stored or sent.</p>" + body + "</article>";
-      }
-
-      function renderAbout() {
-        main.innerHTML =
-          '<article class="panel-card"><h2>About this desk</h2>' +
-          "<p>Visuai LexDesk is the review desk shown with Ning Huen Content AI. This public page is a static mock of that screen: the passage, the findings, and the knowledge-base cards are bundled in the file.</p>" +
-          "<p>Creating a review compares the passage with four sample terms in your browser. It does not call a moderation API, a model provider, a discovery endpoint, or a lexicon service.</p>" +
-          '<p>Sample indicators are not an official approval or a legal opinion. <a href="/content-moderation.html">Return to Content AI</a>.</p></article>';
-      }
-
-      function statusText() {
-        if (state.view !== "reviews") return "Open Reviews to run a sample check.";
-        if (state.phase === "running") return "Checking sample lexicon…";
-        if (state.phase !== "done") return "Waiting for review";
-        if (!state.findings.length) return "No sample indicators";
-        return state.findings.length === 1 ? "1 sample indicator" : state.findings.length + " sample indicators";
-      }
-
-      function renderFindings() {
-        var list = "";
-        if (state.view === "reviews" && state.phase === "done") {
-          if (!state.findings.length) {
-            list = '<p class="find-body muted">No sample-lexicon hits. This demo only knows the four illustrative terms.</p>';
-          } else {
-            list = '<div class="find-list">' + state.findings.map(function (finding) {
-              var on = finding.id === state.selectedId ? " is-on" : "";
-              var sev = finding.severity.toLowerCase();
-              return '<button type="button" class="finding' + on + '" data-finding="' + escapeHtml(finding.id) + '">' +
-                '<span class="finding-top"><span class="finding-cat">' + escapeHtml(finding.category) + '</span><span class="sev sev-' + sev + '">' + escapeHtml(finding.severity) + "</span></span>" +
-                '<span class="finding-ex">' + escapeHtml(finding.excerpt) + "</span></button>";
-            }).join("") + "</div>";
-          }
-        }
-        var selected = null;
-        state.findings.forEach(function (finding) {
-          if (finding.id === state.selectedId) selected = finding;
-        });
-        var foot = "";
-        if (selected && state.view === "reviews") {
-          foot = '<article class="detail"><p class="kicker">Category</p><p>' + escapeHtml(selected.category) + '</p>' +
-            '<p class="kicker">Span</p><p>' + escapeHtml(selected.term) + '</p>' +
-            '<p class="kicker">Knowledge-base card</p><h3>' + escapeHtml(selected.kbTitle) + "</h3><p>" + escapeHtml(selected.kbBody) + "</p>" +
-            '<p class="kicker">Review advice</p><p>' + escapeHtml(selected.advice) + "</p></article>";
-        } else {
-          foot = '<p class="find-foot">Select a finding to inspect category, span, knowledge-base card, and review advice.</p>';
-        }
-        findingsEl.innerHTML =
-          '<div class="find-head"><h2>Findings</h2><span class="find-status">' + escapeHtml(statusText()) + "</span></div>" +
-          list + foot;
-        live.textContent = statusText();
-      }
-
-      function renderSide() {
-        var links = document.querySelectorAll(".side-link");
-        Array.prototype.forEach.call(links, function (btn) {
-          var on = btn.getAttribute("data-view") === state.view;
-          btn.classList.toggle("is-on", on);
-          if (on) btn.setAttribute("aria-current", "page");
-          else btn.removeAttribute("aria-current");
-        });
-      }
-
-      function fitDraft() {
-        var field = document.getElementById("lex-draft");
-        if (!field) return;
-        field.style.height = "auto";
-        field.style.height = Math.max(field.scrollHeight, 220) + "px";
-      }
-
-      function render() {
-        if (state.view === "lexicon") renderLexicon();
-        else if (state.view === "report") renderReport();
-        else if (state.view === "about") renderAbout();
-        else renderReviews();
-        renderFindings();
-        renderSide();
-        fitDraft();
-      }
-
-      function clearTimer() {
-        if (state.timer) {
-          clearTimeout(state.timer);
-          state.timer = null;
-        }
-      }
-
-      function loadExample(id) {
-        var example = null;
-        EXAMPLES.forEach(function (item) { if (item.id === id) example = item; });
-        if (!example) return;
-        clearTimer();
-        syncDraft();
-        state.view = "reviews";
-        state.mode = example.mode;
-        drafts[example.mode] = example.draft;
-        state.phase = "idle";
-        state.findings = [];
-        state.selectedId = null;
-        render();
-      }
-
-      function createReview() {
-        syncDraft();
-        clearTimer();
-        state.view = "reviews";
-        state.phase = "running";
-        state.findings = [];
-        state.selectedId = null;
-        var mode = state.mode;
-        var draft = currentDraft();
-        render();
-        var wait = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420;
-        state.timer = setTimeout(function () {
-          state.timer = null;
-          if (state.mode !== mode || state.phase !== "running") return;
-          state.phase = "done";
-          state.findings = (mode === "text" || mode === "dialogue") ? matchRules(draft) : [limitFinding(mode)];
-          state.selectedId = state.findings.length ? state.findings[0].id : null;
-          render();
-        }, wait);
-      }
-
-      app.addEventListener("click", function (event) {
-        var el = event.target.closest("[data-action], [data-view], [data-mode], [data-example], [data-finding]");
-        if (!el || !app.contains(el)) return;
-        if (el.dataset.finding) {
-          state.selectedId = el.dataset.finding;
-          render();
-          return;
-        }
-        syncDraft();
-        if (el.dataset.view) {
-          state.view = el.dataset.view;
-          render();
-          return;
-        }
-        if (el.dataset.mode) {
-          clearTimer();
-          state.mode = el.dataset.mode;
-          state.phase = "idle";
-          state.findings = [];
-          state.selectedId = null;
-          state.view = "reviews";
-          render();
-          return;
-        }
-        if (el.dataset.example) {
-          loadExample(el.dataset.example);
-          return;
-        }
-        if (el.dataset.action === "try") {
-          var order = ["narrative", "persons", "dialogue"];
-          var current = order.indexOf(activeExampleId());
-          loadExample(order[(current + 1) % order.length]);
-          return;
-        }
-        if (el.dataset.action === "create") {
-          createReview();
-          return;
-        }
-        if (el.dataset.action === "new") {
-          clearTimer();
-          drafts.text = "";
-          state.view = "reviews";
-          state.mode = "text";
-          state.phase = "idle";
-          state.findings = [];
-          state.selectedId = null;
-          render();
-          return;
-        }
-        if (el.dataset.action === "edit") {
-          clearTimer();
-          state.phase = "idle";
-          state.findings = [];
-          state.selectedId = null;
-          render();
-        }
-      });
-
-      app.addEventListener("input", function (event) {
-        if (event.target && event.target.id === "lex-draft") {
-          if (state.mode === "dialogue") drafts.dialogue = event.target.value;
-          else drafts.text = event.target.value;
-          fitDraft();
-        }
-      });
-
-      render();
-    })();
-  </script>
-</body>
-</html>
+PLACEHOLDER_REST
