@@ -47,6 +47,12 @@
     .mock-highlight { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
     .hl-red { background: rgba(255,77,106,0.25); color: #ff8fa0; border: 1px solid rgba(255,77,106,0.4); }
     .key-hint { position: fixed; top: 100px; right: 24px; font-size: 11px; color: var(--gray); background: rgba(14,24,64,0.7); border: 1px solid var(--border); padding: 6px 12px; border-radius: 20px; backdrop-filter: blur(8px); }
+    .nav-links { display: flex; align-items: center; gap: 12px; }
+    .demo-nav-btn { padding: 8px 16px; font-size: 14px; white-space: nowrap; }
+    .cover-actions { margin-top: 28px; position: relative; z-index: 2; }
+    @media (max-width: 520px) {
+      .cover-actions { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -90,6 +96,7 @@
             </a>
           </div>
         </div>
+        <a class="btn btn-primary demo-nav-btn" href="/content-moderation-demo.html" aria-label="Open the LexDesk demo">Demo</a>
       </div>
     </div>
   </nav>
@@ -108,6 +115,9 @@
       <span class="tag tag-teal">🛡️ Hong Kong NSL Compliant</span>
       <span class="tag tag-blue">🤖 Multimodal AI</span>
       <span class="tag tag-gold">🏆 HSITP SPIN Supported</span>
+    </div>
+    <div class="cover-actions">
+      <a class="btn btn-primary" href="/content-moderation-demo.html" aria-label="Open the LexDesk demo">Demo</a>
     </div>
   </div>
   <div style="position:absolute;right:52px;top:50%;transform:translateY(-52%);width:380px;">
